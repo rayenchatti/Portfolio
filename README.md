@@ -6,7 +6,7 @@
 
 Next.js 16 · React 19 · TypeScript · Three.js / React Three Fiber · Framer Motion · Tailwind CSS v4
 
-### [🔴 Live site → rayen-chatti-portfolio.vercel.app](https://rayen-chatti-portfolio.vercel.app)
+### [🔴 Live site → rayenchatti.vercel.app](https://rayenchatti.vercel.app)
 
 ![Hero — the portrait follows the cursor](docs/screenshots/hero.jpg)
 

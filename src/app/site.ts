@@ -1,6 +1,6 @@
 // The site's public address — used for share links, the sitemap and search metadata.
 // If a custom domain is connected in Vercel, change it here.
-export const SITE_URL = 'https://rayen-chatti-portfolio.vercel.app'
+export const SITE_URL = 'https://rayenchatti.vercel.app'
 
 // Structured data (schema.org) so search engines know this page is about a person,
 // and can tie it to the same person's LinkedIn and GitHub
