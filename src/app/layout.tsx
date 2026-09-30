@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Kanit } from 'next/font/google'
 import './globals.css'
 import ColorBends from '@/components/ColorBends'
+import { PERSON_JSON_LD, SITE_URL } from './site'
 
 const kanit = Kanit({
   weight: ['300', '400', '500', '600', '700', '800', '900'],
@@ -15,9 +16,12 @@ const DESCRIPTION =
 
 // The share card itself is app/opengraph-image.jpg — Next.js adds it to both tags below
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rayen-chatti-portfolio.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
+  authors: [{ name: 'Rayen Chatti', url: SITE_URL }],
+  keywords: ['Rayen Chatti', 'Mohamed Rayen Chatti', 'portfolio', 'software engineering', 'ISIMa', 'Mahdia', 'web developer', 'AI', 'cybersecurity'],
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     url: '/',
@@ -41,6 +45,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={kanit.className}>
       <body className="relative bg-[#03010A]">
+        {/* Tells search engines who the page is about */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
+        />
         {/* Persistent Full-Page ColorBends Background */}
         <div className="fixed inset-0 z-0 opacity-70 pointer-events-none">
           <ColorBends
