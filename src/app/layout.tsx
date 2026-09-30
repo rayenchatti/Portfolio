@@ -9,10 +9,28 @@ const kanit = Kanit({
   display: 'swap',
 })
 
+const TITLE = 'Rayen Chatti — Software Engineering Portfolio'
+const DESCRIPTION =
+  'Portfolio of Rayen Chatti, a Software Engineering student specializing in Web, Mobile, AI, and Cybersecurity. Hackathon winner with 4 shipped projects.'
+
+// The share card itself is app/opengraph-image.jpg — Next.js adds it to both tags below
 export const metadata: Metadata = {
-  title: 'Rayen Chatti — Software Engineering Portfolio',
-  description:
-    'Portfolio of Rayen Chatti, a Software Engineering student specializing in Web, Mobile, AI, and Cybersecurity. Hackathon winner with 4 shipped projects.',
+  metadataBase: new URL('https://rayen-chatti-portfolio.vercel.app'),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName: 'Rayen Chatti',
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 }
 
 export default function RootLayout({

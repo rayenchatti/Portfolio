@@ -57,7 +57,7 @@ export default function HeroSection() {
       </div>
 
       {/* Main content: copy left, circular red-framed portrait right */}
-      <div className="relative z-10 flex w-full flex-1 flex-col-reverse items-center justify-center gap-14 px-5 pb-12 pt-24 sm:px-10 md:flex-row md:justify-between md:gap-6 md:px-14 md:pb-8 md:pt-16 lg:px-20 xl:px-28">
+      <div className="relative z-10 flex w-full flex-1 flex-col-reverse items-center justify-center gap-10 px-5 pb-12 pt-20 sm:px-10 md:flex-row md:justify-between md:gap-6 md:px-14 md:pb-8 md:pt-16 lg:px-20 xl:px-28">
 
         {/* Left column — copy */}
         <motion.div
@@ -135,13 +135,13 @@ export default function HeroSection() {
           <FadeIn delay={0.15} y={0} className="relative flex items-center justify-center">
             {/* Ambient halo blending into the animated background behind it */}
             <div
-              className="absolute h-[min(70vh,40rem)] w-[min(70vh,40rem)] rounded-full opacity-60 blur-[70px] mix-blend-screen"
+              className="absolute h-[min(44vh,92vw)] w-[min(44vh,92vw)] rounded-full md:h-[min(70vh,40rem)] md:w-[min(70vh,40rem)] opacity-60 blur-[70px] mix-blend-screen"
               style={{
                 background: 'radial-gradient(circle, #FF2020 0%, #A00000 45%, rgba(160,0,0,0) 75%)',
               }}
             />
             <motion.div
-              className="relative z-10 h-[min(56vh,32rem)] w-[min(56vh,32rem)]"
+              className="relative z-10 h-[min(34vh,72vw)] w-[min(34vh,72vw)] md:h-[min(56vh,32rem)] md:w-[min(56vh,32rem)]"
               style={reduceMotion ? undefined : { scale: portraitScale, y: portraitY }}
             >
               {/* Small accent circle orbiting along the glowing ring — starts bottom-left, passes behind the portrait */}
