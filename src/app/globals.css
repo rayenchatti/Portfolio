@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* ── Reset ──────────────────────────────────────────── */
+/* Layered under Tailwind's utilities layer so padding/margin utilities can override it. */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html {
+  background-color: #1A1A1A;
+  font-family: 'Kanit', sans-serif;
+  min-height: 100%;
+  width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  background-color: #1A1A1A;
+  color: #D7E2EA;
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: clip;
+}
+
+/* ── Section Heading ──────────────────────────────── */
+.hero-heading {
+  color: #D7E2EA;
+}
+
+/* ── Eyebrow Label ─────────────────────────────────── */
+.eyebrow-label {
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(215, 226, 234, 0.5);
+}
