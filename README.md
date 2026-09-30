@@ -59,7 +59,7 @@ This is my personal portfolio. Instead of a static page, every section is its ow
 - **Animation:** Framer Motion: scroll-linked timelines, springs, shared transitions
 - **Styling:** Tailwind CSS v4, Kanit, Unbounded and Space Grotesk via `next/font`
 - **Icons:** lucide-react
-- **Contact form:** Web3Forms (optional), with a `mailto:` fallback
+- **Contact form:** Web3Forms: messages are sent straight to my inbox, no email app needed
 
 ## Under the hood
 
@@ -113,7 +113,7 @@ npm run dev        # http://localhost:3000
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `NEXT_PUBLIC_WEB3FORMS_KEY` | No | A free [Web3Forms](https://web3forms.com) access key. With it, the contact form delivers messages straight to my inbox. Without it, the form opens the visitor's email app with the message pre-filled. |
+| `NEXT_PUBLIC_WEB3FORMS_KEY` | No | Overrides the [Web3Forms](https://web3forms.com) access key built into `ContactForm.tsx`. The key is public by design, so the form works without setting anything; set this only to send messages to a different Web3Forms form. |
 
 Put it in `.env.local` for local development, and in the Vercel project settings for production.
 
@@ -123,7 +123,7 @@ Replace `public/cv/Rayen-Chatti-CV-EN.pdf` or `Rayen-Chatti-CV-FR.pdf` (keep the
 
 ## Deployment
 
-Deployed on **Vercel**: import the repository, keep the detected Next.js settings, optionally add `NEXT_PUBLIC_WEB3FORMS_KEY`, and deploy. Every push to `main` redeploys.
+Deployed on **Vercel**: import the repository, keep the detected Next.js settings, and deploy. Every push to `main` redeploys.
 
 ## Contact
 

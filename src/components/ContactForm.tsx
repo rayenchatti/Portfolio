@@ -9,11 +9,12 @@ import { grotesk } from './fonts'
 
 const TOPICS = ['Opportunity', 'Project', 'Collaboration', 'Just saying hi']
 
-// With a Web3Forms access key (free, https://web3forms.com) messages are delivered straight to the inbox.
-// Without one, the form hands the message to the visitor's email app, pre-filled.
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY
+// Messages go straight to the inbox through Web3Forms (https://web3forms.com). The access key is
+// public by design — Web3Forms tells you to put it in client code — so it lives here and every build
+// has it; NEXT_PUBLIC_WEB3FORMS_KEY can still override it.
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || 'a2ac0213-c73d-4abe-86f8-35da764fa4b2'
 
-type Status = 'idle' | 'sending' | 'sent' | 'handoff' | 'error'
+type Status = 'idle' | 'sending' | 'sent' | 'error'
 
 const noopSubscribe = () => () => {}
 
@@ -64,14 +65,6 @@ export default function ContactForm({ open, onClose, email }: { open: boolean; o
     const message = String(data.get('message') ?? '').trim()
     const subject = `Portfolio — ${topic}`
     setSender({ name, email: from })
-
-    if (!WEB3FORMS_KEY) {
-      const body = `${message}\n\n— ${name} (${from})`
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-      setStatus('handoff')
-      return
-    }
-
     setStatus('sending')
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -86,7 +79,7 @@ export default function ContactForm({ open, onClose, email }: { open: boolean; o
     }
   }
 
-  const done = status === 'sent' || status === 'handoff'
+  const done = status === 'sent'
 
   if (!mounted) return null
 
@@ -139,10 +132,6 @@ export default function ContactForm({ open, onClose, email }: { open: boolean; o
                       <>
                         Message <span className="italic text-[#FF3B3B]">sent</span>
                       </>
-                    ) : status === 'handoff' ? (
-                      <>
-                        Almost <span className="italic text-[#FF3B3B]">there</span>
-                      </>
                     ) : (
                       <>
                         Let&apos;s <span className="italic text-[#FF3B3B]">connect</span>
@@ -163,9 +152,7 @@ export default function ContactForm({ open, onClose, email }: { open: boolean; o
               {done ? (
                 <div className="flex flex-col items-start gap-6">
                   <p className="max-w-md text-base leading-relaxed text-[#9a9aa3] sm:text-lg">
-                    {status === 'sent'
-                      ? `Thanks${sender.name ? `, ${sender.name}` : ''} — I'll reply to ${sender.email} soon.`
-                      : 'Your email app should have opened with the message ready — just hit send.'}
+                    Thanks{sender.name ? `, ${sender.name}` : ''} — I&apos;ll reply to {sender.email} soon.
                   </p>
                   <button
                     type="button"
